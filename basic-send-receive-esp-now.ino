@@ -1,3 +1,18 @@
+/*
+* This requires 2 ESP-32 devices connected to serial
+* monitors to work properly 
+*
+* INSTRUCTIONS:
+* 1. Load this sketch on each device
+* 2. Open Serial monitors to check for send / recieve
+* 3. changing the struct must happen on BOTH devices to MATCH EXACTLY
+*
+*
+* Use: rapid prototype of packet structs for ESP-NOW
+* communication 
+*
+*/
+
 #include <esp_now.h>
 #include <WiFi.h>
 
@@ -42,8 +57,6 @@ void setup() {
 }
 
 void loop() {
-  // nothing to see here
-  // tx_packet.message = "this is a lime service announcement!";
   esp_now_send(broadcastAddress, (uint8_t *) &tx_packet, sizeof(tx_packet));
   delay(10000);
 }
